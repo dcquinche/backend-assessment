@@ -1,6 +1,7 @@
-const {getAllFavs, getFavById, createFav, deleteFav} = require('./fav.services');
+import {Request, Response} from 'express';
+import {getAllFavs, getFavById, createFav, deleteFav} from './fav.services';
 
-async function handleGetAllFavs(req, res, next) {
+export async function handleGetAllFavs(req: Request, res: Response, next: Function) {
   try {
     const favs = await getAllFavs();
     return res.status(200).json(favs);
@@ -10,7 +11,7 @@ async function handleGetAllFavs(req, res, next) {
   }
 }
 
-async function handleGetFavById(req, res, next) {
+export async function handleGetFavById(req: Request, res: Response, next: Function) {
   const { id } = req.params;
 
   const fav = await getFavById(id);
@@ -22,7 +23,7 @@ async function handleGetFavById(req, res, next) {
   return res.status(200).json(fav);
 }
 
-async function handleCreateFav(req, res, next) {
+export async function handleCreateFav(req: Request, res: Response, next: Function) {
   const data = req.body;
   try {
     const newFavsList = await createFav(data);
@@ -32,7 +33,7 @@ async function handleCreateFav(req, res, next) {
   }
 }
 
-async function handleDeleteFav(req, res, next) {
+export async function handleDeleteFav(req: Request, res: Response, next: Function) {
   const { id } = req.params;
   try {
     const fav = await deleteFav(id);
@@ -44,5 +45,3 @@ async function handleDeleteFav(req, res, next) {
     return res.status(500).json(error);
   }
 }
-
-module.exports = {handleCreateFav, handleDeleteFav, handleGetAllFavs, handleGetFavById}

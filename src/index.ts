@@ -1,8 +1,8 @@
-const express = require('express');
-const {configDb} = require('./config/database')
-const {configExpress} = require('./config/express');
-const {routes} = require('./routes')
-const dotenv = require('dotenv');
+import express from'express';
+import configDb from './config/database';
+import configExpress from './config/express';
+import routes from './routes';
+import dotenv from 'dotenv';
 
 dotenv.config();
 const port = process.env.PORT || 8080;

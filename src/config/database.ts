@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 async function configDb() {
   const uri = process.env.MONGO_DB_URI;
@@ -17,5 +17,4 @@ async function configDb() {
   }
 }
 
-
-module.exports= {configDb};
+export default configDb;
