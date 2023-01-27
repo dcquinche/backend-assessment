@@ -8,6 +8,7 @@ export interface UserDocument extends Document {
   createdAt: Date;
   updatedAt: Date;
   profile: userProfileType;
+  favsList?: Array<Object>;
   comparePassword: (password: string) => Promise<boolean>;
 }
 
@@ -24,6 +25,10 @@ const UserSchema = new Schema(
       required: true,
       min: 8,
     },
+    favsList: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Fav',
+    }]
   },
   {
     timestamps: true,
@@ -31,7 +36,7 @@ const UserSchema = new Schema(
 );
 
 UserSchema.pre('save', async function save(next: Function){
-  const user = this as UserDocument;
+  const user = this as unknown as UserDocument;
   try {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(user.password, salt);

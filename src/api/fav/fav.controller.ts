@@ -6,21 +6,22 @@ export async function handleGetAllFavs(req: Request, res: Response, next: Functi
     const favs = await getAllFavs();
     return res.status(200).json(favs);
   } catch (error) {
-    console.log(error);
     return res.status(500).json(error);
   }
 }
 
 export async function handleGetFavById(req: Request, res: Response, next: Function) {
   const { id } = req.params;
-
-  const fav = await getFavById(id);
-
-  if (!fav) {
-    return res.status(404).json({ message: "Fav not found" });
+  try {
+    const fav = await getFavById(id);
+    if (!fav) {
+      return res.status(404).json({ message: "Fav not found" });
+    }
+    return res.status(200).json(fav);
+  } catch (error) {
+    return res.status(500).json(error);
   }
 
-  return res.status(200).json(fav);
 }
 
 export async function handleCreateFav(req: Request, res: Response, next: Function) {

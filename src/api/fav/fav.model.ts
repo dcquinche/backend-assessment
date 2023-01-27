@@ -3,6 +3,7 @@ import {Schema, model, Document} from 'mongoose';
 export interface FavDocument extends Document {
   name: string;
   list: Array<Object>;
+  author?: Object;
   createdAt: Date;
   updatedAt: Date;
 }
