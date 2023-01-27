@@ -23,6 +23,10 @@ const FavSchema = new Schema(
         type: String,
       }
     }],
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
   },
   {
     timestamps: true,

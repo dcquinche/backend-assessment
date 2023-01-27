@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {getAllFavs, getFavById, createFav, deleteFav} from './fav.services';
+import {getAllFavs, getFavById, createFav, deleteFav, updateFavs} from './fav.services';
 
 export async function handleGetAllFavs(req: Request, res: Response, next: Function) {
   try {
@@ -44,4 +44,18 @@ export async function handleDeleteFav(req: Request, res: Response, next: Functio
   } catch (error) {
     return res.status(500).json(error);
   }
+}
+
+export async function handleUpdateFavs(req: Request, res: Response, next: Function) {
+  const { id } = req.params;
+  const data = req.body;
+  try {
+    const newFav = await updateFavs(id, data);
+    if (!newFav) {
+      return res.status(404).json({ message: "Fav not found" });
+    }
+    return res.status(200).json({ message: "Fav added" });
+    } catch (error) {
+    return res.status(500).json(error);
+    }
 }
