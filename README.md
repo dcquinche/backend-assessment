@@ -12,7 +12,7 @@ Some dependencies as:
 - dotenv: to read the environment variables (PORT, MONGO_DB_URI and JWT_SECRET).
 - bcryptjs: to become stronger the passwords.
 - jsonwebtoken: to do the users authentication.
-- ts-jest and supertest: to do tests to the funcionalities (you can run them with **npx jest <test-file-name>** ).
+- ts-jest and supertest: to do tests to the funcionalities (you can run them with **npx jest fileName** ).
 
 
 ## User Flow
