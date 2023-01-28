@@ -28,7 +28,7 @@ export async function handleCreateFav(req: Request, res: Response, next: Functio
   const data = req.body;
   try {
     const newFavsList = await createFav(data);
-    return res.status(201).json(newFavsList);
+    return res.status(200).json(newFavsList);
   } catch (error) {
     return res.status(500).json(error);
   }

@@ -3,15 +3,16 @@ Make It Real - This is a solution to the Backend Assessment Project (a FAVS API)
 
 ## Built with
 - TypeScript: as programming language and compiled into JavaScript.
-- Node.js: to run the program.
+- Node.js: to run the program (you can use **npm run dev**).
 - MongoDB: to storage the data.
 
 Some dependencies as:
 - express: to build the server.
 - mongoose: to structure the models data.
-- dotenv: to read the environment variables.
+- dotenv: to read the environment variables (PORT, MONGO_DB_URI and JWT_SECRET).
 - bcryptjs: to become stronger the passwords.
 - jsonwebtoken: to do the users authentication.
+- ts-jest and supertest: to do tests to the funcionalities (you can run them with **npx jest <test-file-name>** ).
 
 
 ## User Flow
